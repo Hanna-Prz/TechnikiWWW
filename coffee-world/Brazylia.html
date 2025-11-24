@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>razylia — tradycyjna kawa</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="index.html" aria-label="Coffee World — strona główna">☕ Coffee World</a>
+
+      <button id="nav-toggle" class="nav-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Otwórz menu">
+        ☰
+      </button>
+
+      <nav id="main-nav" class="nav" aria-label="Główna nawigacja">
+        <ul class="nav-list">
+          <li><a href="index.html">Strona główna</a></li>
+          <li><a href="Etiopia.html">Etiopia</a></li>
+          <li><a href="Wlochy.html">Włochy</a></li>
+          <li><a href="Turcja.html">Turcja</a></li>
+          <li><a href="Brazylia.html">Brazylia</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="country-hero">
+      <img id="coffee-img" src="images/Brazylia.jpg" 
+           alt="Ceremonia parzenia kawy w Brazylii" class="coffee-photo" width="800" height="533" loading="lazy" />
+      <h1>Brazylia — tradycyjna ceremonia kawowa</h1>
+      <p class="intro">Brazylia to kraina słonecznej arabiki, w której kawa smakuje słodko i aromatycznie, idealna do codziennego picia w gronie rodziny i przyjaciół. Kliknij w zdjęcie, by odkryć przepis ☕</p>
+    </article>
+
+    <section class="info-section">
+      <div class="recipe-grid container">
+        <div class="recipe-col">
+          <h2>Krótka historia</h2>
+          <ul>
+            <li>Pierwsze plantacje arabiki pojawiły się w XVIII w., w regionie Minas Gerais.</li>
+            <li>Kawa stała się kluczowym towarem eksportowym i symbolem brazylijskiej kultury.</li>
+           </ul>
+
+        </div>
+        <div class="recipe-col">
+          <h2>Okoliczności picia</h2>
+          <ul>
+            <li>Brazylijczycy piją kawę kilka razy dziennie, głównie w domu.</li>
+            <li>Popularna jest mała, mocna kawa w tzw. cafezinho, podawana z cukrem.</li>
+          </ul>
+
+        </div>
+        <div class="recipe-col">
+          <h2>Ciekawostki</h2>
+          <ul>
+            <li>Brazylia jest największym producentem kawy na świecie, głównie arabiki.</li>
+            <li>Charakterystyczny jest delikatny, słodki smak, z nutami orzechów i czekolady.</li>
+         </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="recipe-section" class="recipe-section" aria-hidden="true">
+      <div class="recipe-details container">
+        <h2>Przepis krok po kroku(parzenie przez papier – filtr „café coado”)</h2>
+        <ol>
+          <li>Zmiel świeżą kawę średnio grubo (około 1 łyżka na 150 ml wody).</li>
+          <li>Umieść filtr papierowy w dripperze (np. Chemex lub V60).</li>
+          <li>Zalej kawę gorącą wodą (90–95°C) powoli, pozwalając wodzie równomiernie przepłynąć przez kawę.</li>
+          <li>Poczekaj, aż cała woda przefiltruje się do dzbanka lub filiżanki.</li>
+          <li>Podawaj czystą, bez dodatków, lub z odrobiną cukru.</li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 Coffee World</p>
+    </div>
+  </footer>
+
+  <script src="js/coffee.js" defer></script>
+</body>
+</html>

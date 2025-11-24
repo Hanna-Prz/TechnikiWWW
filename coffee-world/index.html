@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Coffee World — Na jaką kawę masz ochotę?</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="index.html" aria-label="Coffee World — strona główna">☕ Coffee World</a>
+
+      <!-- NAV -->
+      <button id="nav-toggle" class="nav-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Otwórz menu">
+        ☰
+      </button>
+
+      <nav id="main-nav" class="nav" aria-label="Główna nawigacja">
+        <ul class="nav-list">
+          <li><a href="index.html">Strona główna</a></li>
+          <li><a href="Etiopia.html">Etiopia</a></li>
+          <li><a href="Wlochy.html">Włochy</a></li>
+          <li><a href="Turcja.html">Turcja</a></li>
+          <li><a href="Brazylia.html">Brazylia</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <h1 class="hero-title">Na jaką kawę masz ochotę?</h1>
+    <p class="site-tagline">Odkryj tradycje parzenia kawy z całego świata — przepisy, zwyczaje i smaki.</p>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-image">
+        <!-- width/height aby uniknąć CLS; zasugerowane: zoptymalizowany webp w images/ -->
+        <img src="images/coffee-cup.jpg" alt="Filiżanka gorącej kawy" width="500" height="500" loading="lazy" />
+        <div class="steam" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="intro-text">
+      <div class="container">
+        <p>Witaj w Coffee World — miejscu, gdzie poznasz rytuały parzenia kawy z różnych krajów. Kliknij kraj, aby przejść do szczegółów i zobaczyć tradycyjne przepisy.</p>
+      </div>
+    </section>
+
+    <section class="countries">
+      <div class="country-grid container">
+        <a href="Etiopia.html" class="country-card">Etiopia</a>
+        <a href="Wlochy.html" class="country-card">Włochy</a>
+        <a href="Turcja.html" class="country-card">Turcja</a>
+        <a href="Brazylia.html" class="country-card">Brazylia</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 Coffee World — Tradycje parzenia kawy z całego świata</p>
+    </div>
+  </footer>
+
+  <script src="js/coffee.js" defer></script>
+</body>
+</html>
