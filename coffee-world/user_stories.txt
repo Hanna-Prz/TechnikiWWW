@@ -1,0 +1,49 @@
+User Story
+
+Jako odwiedzający stronę Coffee World, chcę w intuicyjny sposób przeglądać tradycje parzenia kawy z różnych krajów, korzystając z czytelnej nawigacji i 
+interaktywnych elementów (takich jak otwieranie przepisu po kliknięciu na zdjęcie), aby w prosty sposób poznać historię, zwyczaje i przepisy kawowe z całego świata.
+
+Akceptowalne kryteria (Acceptance Criteria)
+1. Nawigacja
+
+Użytkownik może otwierać i zamykać menu nawigacyjne na urządzeniach mobilnych poprzez kliknięcie przycisku ☰.
+Menu automatycznie zamyka się po kliknięciu pozycji w menu na urządzeniach <768px.
+Menu dostosowuje się do szerokości ekranu — ukryte na małych ekranach, widoczne na dużych.
+Możliwe jest zamknięcie menu klawiszem Escape.
+
+2. Strona główna
+
+Użytkownik widzi listę dostępnych krajów w formie czytelnych kart i może przejść do dowolnego kraju klikając kartę.
+Widzi hero image z animacją pary nad filiżanką.
+
+3. Podstrony krajów
+
+Każda podstrona (Etiopia, Włochy, Turcja, Brazylia) prezentuje:
+zdjęcie charakterystyczne,
+opis historii,
+okoliczności picia,
+ciekawostki.
+
+4. Interaktywny przepis
+
+Po kliknięciu zdjęcia użytkownik otwiera sekcję z przepisem (overlay).
+Przepis można otworzyć kliknięciem w zdjęcie.
+Przepis można zamknąć klikając w tło overlay lub przepis.
+
+5. Dostępność (A11y)
+
+Elementy interaktywne mają opisane role ARIA i stany aria-expanded.
+Zdjęcie jest fokusowalne i zachowuje się jak przycisk.
+Wszystkie obrazy mają tekst alternatywny.
+
+6. Responsywność
+
+Strona poprawnie działa na urządzeniach mobilnych, tabletach i desktopach.
+Nawigacja i layout dynamicznie dostosowują się do szerokości ekranu.
+
+Definition of Done
+
+Wszystkie podstrony działają analogicznie, mają spójną strukturę i interaktywność.
+Menu działa poprawnie na każdej rozdzielczości i w każdej interakcji.
+Przepis otwiera się i zamyka płynnie oraz zgodnie ze standardami dostępności.
+Kod HTML, CSS i JS jest semantyczny, czytelny i przetestowany na desktop/mobile.
