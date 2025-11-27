@@ -48,6 +48,13 @@ body {
   font-size: .95rem;
   color: #5b4a38;
 }
+/* all images*/
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
 
 /* nav */
 .nav { display: block; }
@@ -349,3 +356,4 @@ a:focus, button:focus {
   .hero-title { font-size: 1.3rem; }
   .recipe-col { padding: .9rem; }
 }
+
