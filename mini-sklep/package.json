@@ -1,0 +1,18 @@
+{
+  "name": "mini-sklep",
+  "version": "1.0.0",
+  "description": "Prosty mini sklep – frontend HTML + backend Node.js + SQLite",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^4.22.1",
+    "sqlite3": "^5.1.7"
+  }
+}

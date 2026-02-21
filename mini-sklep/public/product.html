@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <title>Szczegóły produktu</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+  <h1>🛒 Mini Sklep</h1>
+  <nav>
+    <a href="index.html">Produkty</a>
+    <a href="cart.html">Koszyk</a>
+  </nav>
+</header>
+
+<main>
+  <section id="product-detail"></section>
+
+  <!-- Sekcja uwag -->
+  <section id="feedback-section">
+    <h3>Opinie</h3>
+    <div id="feedback-list"></div>
+
+    <h4>Dodaj swoją opinię</h4>
+    <form id="feedback-form">
+      <input type="text" id="fb-name" placeholder="Twoje imię" required><br>
+      <textarea id="fb-message" placeholder="Twoja opinia" required></textarea><br>
+      <button type="submit">Wyślij</button>
+    </form>
+  </section>
+</main>
+
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+window.productId = urlParams.get('id');
+</script>
+<script src="js/main.js"></script>
+</body>
+</html>
