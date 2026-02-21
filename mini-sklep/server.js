@@ -73,10 +73,12 @@ app.get("/api/cart",(req,res,next)=>{
 app.post("/api/cart",(req,res,next)=>{
   const {product_id,quantity}=req.body;
   if(!product_id || quantity<1) return res.status(400).json({error:"Niepoprawne dane"});
+
   db.get("SELECT quantity FROM products WHERE id=?",[product_id],(err,prod)=>{
     if(err) return next(err);
     if(!prod) return res.status(404).json({error:"Produkt nie istnieje"});
     if(quantity>prod.quantity) return res.status(400).json({error:"Brak wystarczającej ilości"});
+
     db.get("SELECT * FROM cart WHERE product_id=?",[product_id],(err,row)=>{
       if(err) return next(err);
       if(row){
@@ -84,7 +86,10 @@ app.post("/api/cart",(req,res,next)=>{
         if(newQty>prod.quantity) return res.status(400).json({error:"Nie można więcej niż w magazynie"});
         db.run("UPDATE cart SET quantity=? WHERE product_id=?",[newQty,product_id],err2=>{
           if(err2) return next(err2);
-          res.json({ok:true});
+          db.run("UPDATE products SET quantity = quantity - ? WHERE id=?",[quantity, product_id], err3=>{
+            if(err3) return next(err3);
+            res.json({ok:true});
+          });
         });
       } else {
         db.run("INSERT INTO cart (product_id,quantity) VALUES (?,?)",[product_id,quantity], err2=>{
@@ -102,30 +107,47 @@ app.post("/api/cart",(req,res,next)=>{
 app.put("/api/cart/:id",(req,res,next)=>{
   const {quantity}=req.body;
   if(quantity<1) return res.status(400).json({error:"Niepoprawna ilość"});
-  db.get("SELECT product_id FROM cart WHERE id=?",[req.params.id],(err,row)=>{
+
+  db.get("SELECT product_id, quantity AS oldQty FROM cart WHERE id=?",[req.params.id],(err,row)=>{
     if(err) return next(err);
     if(!row) return res.status(404).json({error:"Nie znaleziono w koszyku"});
-    db.get("SELECT quantity FROM products WHERE id=?",[row.product_id],(err,prod)=>{
+
+    const { product_id, oldQty } = row;
+
+    db.get("SELECT quantity FROM products WHERE id=?",[product_id],(err,prod)=>{
       if(err) return next(err);
-      if(quantity>prod.quantity) return res.status(400).json({error:"Nie można więcej niż w magazynie"});
+      if(quantity > (prod.quantity + oldQty)) return res.status(400).json({error:"Nie można więcej niż w magazynie"});
+
+      const change = quantity - oldQty;
       db.run("UPDATE cart SET quantity=? WHERE id=?",[quantity,req.params.id],err2=>{
         if(err2) return next(err2);
-        res.json({ok:true});
+        db.run("UPDATE products SET quantity = quantity - ? WHERE id=?",[change, product_id], err3=>{
+          if(err3) return next(err3);
+          res.json({ok:true});
+        });
       });
     });
   });
 });
 
 app.delete("/api/cart/:id",(req,res,next)=>{
-  db.run("DELETE FROM cart WHERE id=?",[req.params.id],err=>{
+  db.get("SELECT product_id, quantity FROM cart WHERE id=?",[req.params.id],(err,row)=>{
     if(err) return next(err);
-    res.json({ok:true});
+    if(!row) return res.status(404).json({error:"Nie znaleziono w koszyku"});
+
+    const { product_id, quantity } = row;
+
+    db.run("DELETE FROM cart WHERE id=?",[req.params.id],err2=>{
+      if(err2) return next(err2);
+      db.run("UPDATE products SET quantity = quantity + ? WHERE id=?",[quantity, product_id], err3=>{
+        if(err3) return next(err3);
+        res.json({ok:true});
+      });
+    });
   });
 });
 
 // ================== API FEEDBACK ==================
-
-// Pobierz wszystkie uwagi dla produktu
 app.get("/api/feedback/:product_id", (req,res,next)=>{
   const product_id = req.params.product_id;
   db.all("SELECT * FROM feedback WHERE product_id=? ORDER BY created_at DESC",[product_id],(err,rows)=>{
@@ -134,7 +156,6 @@ app.get("/api/feedback/:product_id", (req,res,next)=>{
   });
 });
 
-// Dodaj nową uwagę
 app.post("/api/feedback", (req,res,next)=>{
   const {product_id, name, message} = req.body;
   if(!product_id || !name || !message) return res.status(400).json({error:"Niepoprawne dane"});
